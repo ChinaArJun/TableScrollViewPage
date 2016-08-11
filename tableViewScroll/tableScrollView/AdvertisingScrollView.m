@@ -4,7 +4,6 @@
 
 #import "AdvertisingScrollView.h"
 #import "NSTimer+Addition.h"
-//#import <SDWebImage/UIImageView+WebCache.h>
 #import "UIImageView+WebCache.h"
 #define vMinPhoneWidth 320.0f
 #define vWidthRatio CGRectGetWidth([UIScreen mainScreen].bounds)/vMinPhoneWidth
@@ -162,17 +161,16 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         [imageView setTag:9090];
         [cell addSubview:imageView];
-
+        
     }
     // Configure the cell...
     
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:9090];
     [imageView setImage:nil];
-
-//    NSString *urlString = [_dataArray[indexPath.row] objectForKey:@"user_bannerimg_str"];
     NSString *urlString = _dataArray[indexPath.row];
+    
     if ([urlString rangeOfString:@"http"].location == NSNotFound) {
-//        [imageView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:urlString ofType:@"png"]]];
+        //        [imageView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:urlString ofType:@"png"]]];
         [imageView setImage:[UIImage imageNamed:urlString]];
     }else {
         [imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:urlString ofType:@"jpg"]]];
